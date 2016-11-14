@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Page by Admin</title>
+   <link rel="stylesheet" href="~/css/site.css"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+    <nav>
+      <ul class="nav nav-tabs">
+        <li role="presentation">
+          <a href="/show/@ViewBag.User_one.id">Message Board</a>
+        </li>
+        <li role="presentation">
+          <a href="/dashboard">Dashboard</a>
+        </li>
+        <li role="presentation">
+          <a href="/edit">Profile</a>
+        </li>
+        <li role="presentation">
+          <a href="/logout">Logout</a>
+        </li>
+        <li class="dropdown">
+        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
+    </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Edit User @ViewBag.Find_Edit_User.first_name</h1>
+          <form action="/edit" method="Post">
+            <div class='form-group'>
+              <label for="email">Email Address: </label>
+              <input type="text" name="email" id="email" value="@ViewBag.Find_Edit_User.email">
+            </div>
+            <div class='form-group'>
+              <label for="first_name">First Name: </label>
+              <input id="first_name" type="text" name="first_name" value="@ViewBag.Find_Edit_User.first_name">
+            </div>
+            <div class='form-group'>
+              <label for="first_name">Last Name: </label>
+              <input id="last_name" type="text" name="last_name" value="@ViewBag.Find_Edit_User.last_name">
+            </div>
+            <div class='form-group'>
+              <label for="first_name">Profile Pic: </label>
+              <input id="profile_pic" type="text" name="image" value="@ViewBag.Find_Edit_User.image">
+            </div>
+            <div class="form-group">
+                <label for="auth_level">User Level: </label>
+                  <select name="auth_level" id="auth_level">
+                  <option value=1>User</option>
+                  <option value=0>Admin</option>
+            </div>
+            <div class='form-group'>
+              <input type="hidden" name="id" value="@ViewBag.Find_Edit_User.id">
+            </div>
+            <button type="submit" class="btn btn-default">Update</button>
+            <button href='/dashboard' class="btn btn-default">Cancel</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h1>Change user password</h1>
+          <form action="/admin_edit_password" method="post">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input id="password" type="password" name="password">
+            </div>
+            <div class="form-group">
+              <label for="cPassword">Confirm Password</label>
+              <input id="cPassword" type="password" name="confirm_password">
+            </div>
+             <div class='form-group'>
+              <input type="hidden" name="id" value="@ViewBag.Find_Edit_User.id">
+            </div>
+            <button type="submit" class="btn btn-default">Update</button>
+            <button href="/dashboard" class="btn btn-default">Cancel</button>
+          </form><br><br>
+           <ul>
+                @{
+                    if(ViewBag.errors != null){
+                        foreach(var error in ViewBag.errors){
+                        <p class="errors">@error</p>
+                        }
+                    }   
+                } 
+              </ul>
+        </div>
+        </div>
+      </div>
+</body>
+</html>

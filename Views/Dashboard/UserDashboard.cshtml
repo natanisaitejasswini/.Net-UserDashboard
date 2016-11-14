@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+   <link rel="stylesheet" href="~/css/site.css"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+    <nav>
+    <ul class="nav nav-tabs">
+      <li role="presentation">
+        <a href="/show/@ViewBag.User_one.id">Message Board</a>
+      </li>
+       <li role="presentation" class="active">
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li role="presentation">
+        <a href="/edit">Profile</a>
+      </li>
+      <li role="presentation">
+        <a href="/logout">Logout</a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
+    </li>
+    </ul>
+  </nav>
+  <div class="container">
+</div>
+  <h1>All Users</h1>
+  <p>Welcome user, @ViewBag.User_one.first_name</p>
+  <br><br><br>
+  <table class='table'>
+    <thead>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Created At</th>
+      <th>User Level</th>
+    </thead>
+    <tbody>
+    @{
+        foreach(var All in ViewBag.User_all){
+        <tr>
+            <td>@All.id </td>
+            <td><a href="/show/@All.id">
+            @All.first_name @All.last_name 
+            </a></td>
+            <td> @All.email </td>
+            <td> @All.created_at </td>
+            <td>
+                @if( @All.auth_level == 0 )
+                {
+                    <p>Admin</p>
+                }
+                else
+                {
+                    <p>User</p>
+                }
+            </td>
+        </tr>
+        }
+    }
+  </tbody>
+  </table>
+</div>
+</body>
+</html>

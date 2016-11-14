@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMessageBoard Page</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head> 
+  <nav>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <a href="/">Message Board</a>
+      </li>
+       <li role="presentation">
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li role="presentation">
+        <a href="/edit">Profile</a>
+      </li>
+      <li role="presentation">
+        <a href="/logout">Logout</a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
+    </li>
+    </ul>
+  </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="@ViewBag.Show_User.image" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            @ViewBag.Show_User.first_name @ViewBag.Show_User.last_name</h4>
+                        <p>
+                            <i class="glyphicon glyphicon-tag"></i> #@ViewBag.Show_User.id
+                            <br />
+                            <i class="glyphicon glyphicon-calendar"></i> @ViewBag.Show_User.created_at
+                             <br />
+                            <i class="glyphicon glyphicon-envelope"></i> @ViewBag.Show_User.email
+                            <br />
+                            <i class="glyphicon glyphicon-pencil"></i> @ViewBag.Show_User.description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row bg-danger">
+    <div class="col-md-8">
+      <h2>Leave a message for @ViewBag.Show_User.first_name</h2>
+      <form action='/message' method='Post'>
+        <div class='form-group'>
+          <textarea class="form-control" rows="3" name="message" placeholder="Post Your Message Here"></textarea>
+        </div>
+        <!--Id that specifies how is writting the message-->
+        <input type="hidden" name="user_id" value=@ViewBag.User_one.id> 
+        <!--Id that specifies for whom the message is-->
+        <input type="hidden" name="tag_id" value=@ViewBag.Show_User.id> 
+        <button type="submit" class="btn btn-default pull-right">Post Message</button>
+      </form>
+       <!-- To display Errors -->
+      @{
+            if(ViewBag.errors != null){
+                foreach(var error in ViewBag.errors){
+                    <p class="errors">@error</p>
+                }
+            }
+        } 
+    </div>
+  </div>
+  <div class="row bg-danger" id="message_container">
+    <div class=" big_border col-md-6">
+    @{
+        foreach(var Current in ViewBag.messages){
+        <div class="row">
+            <p class="col-md-6 message1">@Current.first_name Wrote</p><p class="col-md-6 message1"> @Current.created_at</p>
+        </div>
+        <p class="border">@Current.message</p>
+          foreach(var Current1 in ViewBag.comments){
+                    if( @Current1.message_id == @Current.id)
+                    {
+                        <div class="row">
+                        <p class="comments1 col-md-5">@Current1.first_name Commented</p><p class="col-md-6 comments1">@Current1.created_at</p></div>
+                        <p class="comments2">@Current1.comment</p>
+                    }
+            }
+          <form action ="/comment" method='Post'>
+            <div class="form-group" id="comment_box">
+              <textarea class="form-control" rows="3" name="comment" placeholder="Post Your Comment Here"></textarea>
+              <input type="hidden" name="message_id" value ="@Current.id">
+              <input type="hidden" name="user_id" value="@ViewBag.User_one.id">
+              <input type="hidden" name="temp_id" value=@ViewBag.Show_User.id>
+            </div>
+            <button type="submit" class="btn btn-default pull-right">Post Comment</button><br><br>
+          </form>
+        }
+    }
+    </div>
+    </div>
+  </div>
+</body>
+</html>

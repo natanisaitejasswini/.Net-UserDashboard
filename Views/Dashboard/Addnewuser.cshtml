@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New User</title>
+   <link rel="stylesheet" href="~/css/site.css"/>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <ul class="nav nav-tabs">
+    <li role="presentation">
+      <a href="/dashboard">Home</a>
+    </li>
+    <li role="presentation">
+      <a href="/show/@ViewBag.User_one.id">Message Board</a>
+    </li>
+    <li role="presentation">
+      <a href="/edit">Profile</a>
+    </li>
+    <li role="presentation">
+      <a href="/logout">Logout</a>
+    </li>
+   <li class="dropdown">
+    <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
+    </li>
+   </ul>
+  <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>Add New User</h1>
+            <a href="dashboard"><button type="button" class="btn pull-right">Return To Dashboard</button></a>
+            <br><br><br>
+            <form action='createNewUser' method="Post">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input name="email" type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input name="first_name" type="text" class="form-control" id="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input name="last_name" type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="cPassword">Confirm Password</label>
+              <input name="confirm_password" type="password" class="form-control" id="cPassword" placeholder="Confirm password">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul>
+            @{
+                if(ViewBag.errors != null){
+                    foreach(var error in ViewBag.errors){
+                    <p class="errors">@error</p>
+                    }
+                }   
+            } 
+        </ul>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
