@@ -82,7 +82,7 @@ namespace aspuserdashboard.Controllers
             return RedirectToAction("Register");
         }
         [HttpPost]
-        [RouteAttribute("login")]
+        [Route("login")]
         public IActionResult Login(string email, string password)
         {
             List<string> temp_errors = new List<string>();
@@ -344,6 +344,3 @@ namespace aspuserdashboard.Controllers
     }
 
 }
-
-
-

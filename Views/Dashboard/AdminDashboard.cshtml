@@ -8,33 +8,42 @@
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 </head>
 <body>
-    <nav>
-    <ul class="nav nav-tabs">
-      <li role="presentation">
-        <a href="/show/@ViewBag.User_one.id">Message Board</a>
-      </li>
-       <li role="presentation" class="active">
-        <a href="">Dashboard</a>
-      </li>
-      <li role="presentation">
-        <a href="/edit">Profile</a>
-      </li>
-      <li role="presentation">
-        <a href="/logout">Logout</a>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
-        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
-    </li>
-    </ul>
-  </nav>
+  <nav class="navbar navbar-inverse"> 
+      <div class="container-fluid" id="color">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/dashboard">Dashboard</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+             <li><a href="/show/@ViewBag.User_one.id">Message Board</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/edit">Profile</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/logout">Logout</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+             <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+             <img src="@ViewBag.User_one.image" class="img-circle special-img"></a>
+          </ul>
+        </div>
+      </div>
+      </nav>
+  <div class="dashboardbg"></div>
   <div class="container">
-  <h1>Manage Users</h1>
-  <p>Welcome user, @ViewBag.User_one.first_name</p>
-  <a href="new"><button type="button" class="btn pull-right">Add New User</button></a>
+  <h1 class="navy">Manage Users</h1>
+  <p class="navy">Welcome user, @ViewBag.User_one.first_name</p>
+  <a href="new"><button type="button" class="btn pull-right navybutton">Add New User</button></a>
   <br><br><br>
   <table class='table'>
-    <thead>
+    <thead class="navy">
       <th>ID</th>
       <th>First Name</th>
       <th>Email</th>
@@ -42,7 +51,8 @@
       <th>User Level</th>
       <th>Actions</th>
     </thead>
-    <tbody>
+    <hr class="tabline">
+    <tbody class="navybg">
     @{
         foreach(var All in ViewBag.User_all){
         <tr>

@@ -14,7 +14,7 @@ namespace DashboardApp.Factory
         private string connectionString;
         public CommentRepository()
         {
-            connectionString = "server=localhost;userid=root;password=root;port=8889;database=aspwall;SslMode=None";
+            connectionString = "server=127.0.0.1;userid=root;password=password;port=3306;database=aspwall;SslMode=None";
         }
 
         internal IDbConnection Connection

@@ -4,49 +4,62 @@
   <meta charset="UTF-8">
   <title>Edit a User</title>
    <link rel="stylesheet" href="~/css/site.css"/>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="icon" href="favicon.ico">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav>
-      <ul class="nav nav-tabs">
-        <li role="presentation">
-          <a href="/show/@ViewBag.User_one.id">Message Board</a>
-        </li>
-        <li role="presentation">
-          <a href="/dashboard">Dashboard</a>
-        </li>
-        <li role="presentation" class="active">
-          <a href="/edit">Profile</a>
-        </li>
-        <li role="presentation">
-          <a href="/logout">Logout</a>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle profile-image" data-toggle="dropdown">
-        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
-    </li>
-      </ul>
-    </nav>
+    <nav class="navbar navbar-inverse"> 
+      <div class="container-fluid" id="color">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/edit">Profile</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+             <li><a href="/show/@ViewBag.User_one.id">Message Board</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/dashboard">Dashboard</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/logout">Logout</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+             <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+             <img src="@ViewBag.User_one.image" class="img-circle special-img"></a>
+          </ul>
+        </div>
+      </div>
+      </nav>
+    <div class="dashboardbg"></div>
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
+        <div class="formBox1">
           <h1>Edit your information</h1>
           <form action="/edit" method="Post">
             <div class='form-group'>
-              <label for="email">Email Address: </label>
+              <label for="email">Email Address: </label><br>
               <input type="text" name="email" id="email" value="@ViewBag.User_one.email">
             </div>
             <div class='form-group'>
-              <label for="first_name">First Name: </label>
+              <label for="first_name">First Name: </label><br>
               <input id="first_name" type="text" name="first_name" value="@ViewBag.User_one.first_name">
             </div>
             <div class='form-group'>
-              <label for="first_name">Last Name: </label>
+              <label for="first_name">Last Name: </label><br>
               <input id="last_name" type="text" name="last_name" value="@ViewBag.User_one.last_name">
             </div>
+
             <div class='form-group'>
-              <label for="first_name">Profile Pic: </label>
+              <label for="first_name">Profile Pic: </label><br>
               <input id="profile_pic" type="text" name="image" value="@ViewBag.User_one.image">
             </div>
             <div class='form-group'>
@@ -55,26 +68,25 @@
             <div class='form-group'>
               <input type="hidden" name="id" value="@ViewBag.User_one.id">
             </div>
-            <button type="submit" class="btn btn-default">Update</button>
-            <button href='/dashboard' class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn navybutton">Update</button>
           </form>
         </div>
-        <div class="col-md-6">
+        </div>
+        <div class="col-md-6 formBox1">
           <h1>Change your password</h1>
           <form action="/edit_password" method="post">
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password">Password</label><br>
               <input id="password" type="password" name="password">
             </div>
             <div class="form-group">
-              <label for="cPassword">Confirm Password</label>
+              <label for="cPassword">Confirm Password</label><br>
               <input id="cPassword" type="password" name="confirm_password">
             </div>
             <div class='form-group'>
               <input type="hidden" name="id" value="@ViewBag.User_one.id">
             </div>
-            <button type="submit" class="btn btn-default">Update</button>
-            <button href='/dashboard' class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn navybutton">Update</button>
           </form><br><br>
            <ul>
                 @{
@@ -86,14 +98,14 @@
                 } 
               </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 formBox1">
         <h1>Change your description</h1>
         <form action="/description" method="post">
           <div class="form-group">
             <label for='description'>Description</label>
             <textarea class="form-control" rows="5" id="description" name="description">@ViewBag.User_one.description</textarea>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn navybutton">Submit</button>
         </form>
     </div>
         </div>

@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <title>NMessageBoard Page</title>
     <link rel="stylesheet" href="~/css/site.css"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="icon" href="favicon.ico">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head> 
-  <nav>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <a href="/">Message Board</a>
-      </li>
-       <li role="presentation">
-        <a href="/dashboard">Dashboard</a>
-      </li>
-      <li role="presentation">
-        <a href="/edit">Profile</a>
-      </li>
-      <li role="presentation">
-        <a href="/logout">Logout</a>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
-        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
-    </li>
-    </ul>
-  </nav>
+   <nav class="navbar navbar-inverse"> 
+      <div class="container-fluid" id="color">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <a class="navbar-brand" href="/show/@ViewBag.User_one.id">Message Board</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+              <li><a href="/dashboard">Dashboard</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/edit">Profile</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/logout">Logout</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+             <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+             <img src="@ViewBag.User_one.image" class="img-circle special-img"></a>
+          </ul>
+        </div>
+      </div>
+      </nav>
+   <div class="dashboardbg"></div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -52,9 +63,9 @@
         </div>
     </div>
 </div>
-<div class="row bg-danger">
+<div class="row bg-danger1">
     <div class="col-md-8">
-      <h2>Leave a message for @ViewBag.Show_User.first_name</h2>
+      <h2 class="h2white">Leave a message for @ViewBag.Show_User.first_name</h2>
       <form action='/message' method='Post'>
         <div class='form-group'>
           <textarea class="form-control" rows="3" name="message" placeholder="Post Your Message Here"></textarea>
@@ -75,7 +86,7 @@
         } 
     </div>
   </div>
-  <div class="row bg-danger" id="message_container">
+  <div class="row bg-danger1" id="message_container">
     <div class=" big_border col-md-6">
     @{
         foreach(var Current in ViewBag.messages){

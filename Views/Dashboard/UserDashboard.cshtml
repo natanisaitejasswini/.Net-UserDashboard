@@ -4,44 +4,58 @@
   <meta charset="UTF-8">
   <title>Admin Panel</title>
    <link rel="stylesheet" href="~/css/site.css"/>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="icon" href="favicon.ico">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav>
-    <ul class="nav nav-tabs">
-      <li role="presentation">
-        <a href="/show/@ViewBag.User_one.id">Message Board</a>
-      </li>
-       <li role="presentation" class="active">
-        <a href="/dashboard">Dashboard</a>
-      </li>
-      <li role="presentation">
-        <a href="/edit">Profile</a>
-      </li>
-      <li role="presentation">
-        <a href="/logout">Logout</a>
-      </li>
-      <li class="dropdown">
-        <a class="dropdown-toggle profile-image" data-toggle="dropdown">
-        <img src="@ViewBag.User_one.image" class="img-circle special-img"> @ViewBag.User_one.first_name</a>
-    </li>
-    </ul>
-  </nav>
+   <nav class="navbar navbar-inverse"> 
+      <div class="container-fluid" id="color">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/dashboard">Dashboard</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+             <li><a href="/show/@ViewBag.User_one.id">Message Board</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/edit">Profile</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+                 <li><a href="/logout">Logout</a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+             <a class="dropdown-toggle profile-image" data-toggle="dropdown">
+             <img src="@ViewBag.User_one.image" class="img-circle special-img"></a>
+          </ul>
+        </div>
+      </div>
+      </nav>
+  <div class="dashboardbg"></div>
   <div class="container">
 </div>
-  <h1>All Users</h1>
-  <p>Welcome user, @ViewBag.User_one.first_name</p>
-  <br><br><br>
+  <h1 class="navy">All Users</h1>
+  <p class="navy">Welcome user, @ViewBag.User_one.first_name</p>
+  <br>
   <table class='table'>
-    <thead>
+    <thead class="navy">
       <th>ID</th>
       <th>First Name</th>
       <th>Email</th>
       <th>Created At</th>
       <th>User Level</th>
     </thead>
-    <tbody>
+    <hr class="tabline">
+    <tbody class="navybg">
     @{
         foreach(var All in ViewBag.User_all){
         <tr>
