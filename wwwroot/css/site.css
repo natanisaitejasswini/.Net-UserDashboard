@@ -1,5 +1,5 @@
 .mainbg {
-  background-image: url(../images/userindex.jpg);
+  background-image: url(../images/167H.jpg);
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -87,10 +87,16 @@
 }
 .navy{
     color: #2b414d;
+    font-size: 22px;
+    font-weight: bold;
+}
+.navyred{
+    color: maroon;
+    font-size: 20px;
 }
 .navybg{
     color: maroon;
-    font-size: 16px;
+    font-size: 15px;
 }
 hr.tabline{ 
   height: 30px; 
@@ -143,4 +149,30 @@ hr.tabline:before {
 }
 .h2white{
     color: #7f0000;
+}
+.showContent {
+  padding: 3%;
+  background-color: rgba(256,256,256,.85);
+  border: 2px solid #2b414d;
+}
+btn {
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0;
+}
+.great {
+  border: 1px solid #42DCA3;
+  color: white;
+  background-color: #2b414d;
+}
+.great:hover,
+.great:focus {
+  border: 1px solid #2b414d;
+  outline: none;
+  color: #2b414d;
+  background-color: white;
 }
